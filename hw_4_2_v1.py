@@ -12,7 +12,6 @@ def get_eng_words(text):
         else:
             text1 += ' '
     j_list = text1.split()
-    print(j_list)
     for i in range(len(j_list)):
         j_list_1.append(clear_word(j_list[i], punctuation + digits))
 
@@ -44,8 +43,17 @@ def get_eng_words(text):
 if __name__ == "__main__":
     # Ниже вместо ... можете вставить свой блок кода для демонстрации работы функции или отладки.
     # Этот код проверяться и оцениваться не будет
-    s = '''["What is world?", "World is peace!", "В Data Science язык программирования Python\tнашёл широкое применение.", 
-        "непRавильные сл0ва сЦ1фрам - 123"]
+    s = '''["""he Zen of Python, by Tim Peters
+    
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested."
+    Sparse is better than dense.""",
+            "Created by Guido van Rossum and first released in 1991.",
+            "Сreated by Гвидо van Rossum and first released in 1991.",
+            ]
         :param text: текст в виде списка строк.
         В строке допустимы любые символы в любом регистре, а также
         * знаки препинания (string.punctuation),
