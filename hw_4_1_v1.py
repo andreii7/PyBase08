@@ -28,7 +28,6 @@ def clear_word(word,filterstr):
             else:
                 x += 1
         except MyError:
-#            word = word[:x] + word[x+1:]
             word = ''
             my_print_error(i,x)
 
@@ -41,41 +40,38 @@ def clear_word(word,filterstr):
             else:
                 x += 1
         except MyError:
-#            word = word[:x] + word[x + 1:]
             word = ''
             my_print_error(i,x)
     result = word.translate({ord(i): '' for i in filterstr})
 
     return result
 
-def main():
-    if __name__ == "__main__":
+
+if __name__ == "__main__":
     # Ниже вместо ... можете вставить свой блок кода для демонстрации работы функции или отладки.
     # Этот код проверяться и оцениваться не будет
 
-        word = input('Введите строку с которой надо будет работать:')
-        filterstr = input('''Введите символы которые надо убрать из строки выше, 
+    word = input('Введите строку с которой надо будет работать:')
+    filterstr = input('''Введите символы которые надо убрать из строки выше, 
     не забывайте, что пробел - это тоже символ:''')
-        j_list = []
-        filterstr_true = False
+    j_list = []
+    filterstr_true = False
+    j = 0
+    i = 0
+    while i < len(filterstr):
+        while j < len(word):
+            if filterstr[i] == word[j]:
+                j_list.append(j)
+            j += 1
+        if len(j_list) != 0:
+            filterstr_true = True
+            print('Символ {} встречается в строке в позициях {}'.format(filterstr[i],j_list))
+            j_list.clear()
         j = 0
-        i = 0
-        while i < len(filterstr):
-            while j < len(word):
-                if filterstr[i] == word[j]:
-                    j_list.append(j)
-                j += 1
-            if len(j_list) != 0:
-                filterstr_true = True
-                print('Символ {} встречается в строке в позициях {}'.format(filterstr[i],j_list))
-                j_list.clear()
-            j = 0
-            i += 1
+        i += 1
 
-        if filterstr_true == False:
-            print('В данной строке нет символов которые Вы хотели бы убрать.')
-        j_list = word.split()
-        for i in range(len(j_list)):
-            print(clear_word(j_list[i],filterstr))
-
-main()
+    if filterstr_true == False:
+        print('В данной строке нет символов которые Вы хотели бы убрать.')
+    j_list = word.split()
+    for i in range(len(j_list)):
+        print(clear_word(j_list[i],filterstr))
